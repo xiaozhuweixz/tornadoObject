@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <input type="button" value="xmlRequest" onclick="xmlRequest()">
+    <input type="button" value="getAjaxRequest" onclick="getAjaxRequest()"><br/>
+    <input type="button" value="postAjaxRequest" onclick="postAjaxRequest()">
+
+    <script src="/static/jquery/jquery.min.js"></script>
+
+    <script>
+        function getXml() {
+            var x = null;
+            if (XMLHttpRequest){
+                x = new XMLHttpRequest();
+            }else {
+                x = new ActiveXObject("Microsoft.XMLHTTP");
+            }
+            return x;
+        }
+
+        function  getAjaxRequest() {
+            var xhr = getXml();
+            // 定义回调函数
+            xhr.onreadystatechange = function(){
+                if(xhr.readyState == 4){
+                    // 已经接收到全部响应数据，执行以下操作
+                    var data = xhr.responseText;
+                    console.log(data);
+                }
+            };
+            // 指定连接方式和地址----文件方式
+            xhr.open('get', "/index", true);
+            // 发送请求
+            xhr.send();
+        }
+
+        function postAjaxRequest() {
+
+            var xhr = getXml();
+            xhr.readystatechange = function () {
+                if (xhr.readyState=4) {
+                    var data = xhr.responseText;
+                    console.log(data)
+                }
+            };
+            xhr.open("post","/index",true);
+            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset-UTF-8');
+            xhr.send("k1=1;k2=2");
+        }
+
+
+
+    </script>
+</body>
+</html>

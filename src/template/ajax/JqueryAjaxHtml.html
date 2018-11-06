@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <input type="button" value="getAjaxRequest" onclick="getAjaxRequest()"><br/>
+    <input type="button" value="postAjaxRequest" onclick="postAjaxRequest()">
+
+    <script src="/static/jquery/jquery.min.js"></script>
+
+    <script>
+        function getAjaxRequest(){
+           $.ajax({
+           url:"/index",
+           type:"get",
+           dataType:"text",
+           success:function (data, readSataeCode, XmlRuqesut) {
+               console.log(data);
+               console.log(readSataeCode);
+           }
+        });}
+
+        function postAjaxRequest() {
+            $.ajax({
+                url:"/index",
+                type:"post",
+                dataType:"text",
+                data:{k1:'1',k2:'2'},
+                success:function (data) {
+                    console.log(data);
+                }
+            });
+        }
+
+
+    </script>
+</body>
+</html>
