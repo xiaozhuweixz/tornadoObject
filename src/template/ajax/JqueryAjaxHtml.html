@@ -13,7 +13,7 @@
     <script>
         function getAjaxRequest(){
            $.ajax({
-           url:"/index",
+           url:"http://localhost:8881/index",
            type:"get",
            dataType:"text",
            success:function (data, readSataeCode, XmlRuqesut) {
@@ -24,7 +24,7 @@
 
         function postAjaxRequest() {
             $.ajax({
-                url:"/index",
+                url:"http://localhost:8881/index",
                 type:"post",
                 dataType:"text",
                 data:{k1:'1',k2:'2'},
